@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers','ionic-native-transitions'])
+angular.module('starter', ['ionic', 'starter.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,13 +22,15 @@ angular.module('starter', ['ionic', 'starter.controllers','ionic-native-transiti
   });
 })
 
-.config(function($ionicNativeTransitionsProvider){
-  $ionicNativeTransitionsProvider.setOptions({
-    "duration"          : 300,
-    "androiddelay"      : 100, // Longer delay better for older androids
-    // "fixedPixelsTop"    : 64, // looks OK on iOS
-  });
-})
+
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.scrolling.jsScrolling(false);
+ 
+  // Or for only a single platform, use
+  // if( ionic.Platform.isAndroid() ) {
+    // $ionicConfigProvider.scrolling.jsScrolling(false);
+  // }
+}
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
